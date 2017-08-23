@@ -11,7 +11,7 @@ done
 
 THEME_FUNCS=($(print -l ${(ok)functions} | grep __devinsba_theme))
 
-PROMPT=$'$(for T in $THEME_FUNCS; do __theme_func $T; done) %d %{$fg[cyan]%}%D{[%I:%M:%S]}\
+PROMPT=$'$(for T in $THEME_FUNCS; do __theme_func $T; done) %~ %{$fg[cyan]%}%D{[%I:%M:%S]}\
 %{$fg_bold[green]%}%n@%M $%{$reset_color%} '
 
 ZSH_THEME_GIT_PROMPT_DIRTY=" *"
