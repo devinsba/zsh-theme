@@ -1,12 +1,17 @@
 function __theme_func() {
     RESULT=$($1)
-    echo "${RESULT};"
+    if [[ -n $RESULT ]] ; then
+        echo -n "${RESULT};"
+    fi
 }
 
-source $ANTIGEN_BUNDLES/devinsba/zsh-theme/funcs/*.zsh
-THEME_FUNCS=$(print -l ${(ok)functions} | grep __devinsba_theme)
+for F in $ANTIGEN_BUNDLES/devinsba/zsh-theme/funcs/*.zsh; do
+    source $F
+done
 
-PROMPT=$'$(for T in $THEME_FUNCS; do __theme_func $T; done) ~ %t\
+THEME_FUNCS=($(print -l ${(ok)functions} | grep __devinsba_theme))
+
+PROMPT=$'$(for T in $THEME_FUNCS; do __theme_func $T; done) %d %{$fg[cyan]%}%D{[%I:%M:%S]}\
 %{$fg_bold[green]%}%n@%M $%{$reset_color%} '
 
 ZSH_THEME_GIT_PROMPT_DIRTY=" *"
