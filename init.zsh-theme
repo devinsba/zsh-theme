@@ -1,9 +1,6 @@
-ANACONDA_PART=""
-if (($+CONDA_DEFAULT_ENV)) ; then
-    ANACONDA_PART=" conda(${CONDA_DEFAULT_ENV})"
-fi
+source $ANTIGEN_BUNDLES/devinsba/zsh-theme/lib/*.zsh
 
-PROMPT=$'%{$fg[white]%}$(~/.rvm/bin/rvm-prompt)$ANACONDA_PART %{$fg_bold[cyan]%}%~%{$reset_color%}$(git_prompt_info) %{$fg[cyan]%}%D{[%I:%M:%S]}\
+PROMPT=$'%{$fg[white]%}$(__devinsba_theme_anaconda)$(git_prompt_info) %{$fg[cyan]%}%D{[%I:%M:%S]}\
 %{$fg_bold[green]%}%n$%{$reset_color%} '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[white]%}("
