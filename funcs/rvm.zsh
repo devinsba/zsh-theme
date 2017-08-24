@@ -1,3 +1,4 @@
 function __devinsba_theme_rvm() {
-    echo "rvm($(~/.rvm/bin/rvm-prompt))"
+    rvm_version=$(command ~/.rvm/bin/rvm-prompt) || return 0
+    echo "rvm(${rvm_version})"
 }
